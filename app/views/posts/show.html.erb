@@ -1,13 +1,22 @@
+<h3>投稿者</h3>
+<p><%= link_to @post.user.name, user_path(@post.user.id) %>さん</p>
 <h3>本文</h3>
-<%= @post.content %></p>
+<p><%= @post.content %></p>
 <h3>Image</h3>
 <div class="image_area">
   <%= image_tag @post.image.url %>
 </div>
+<% unless @post.user.id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
 <% if @post.user_id == current_user.id %>
   <div class="link　btn-group">
     <span class="btn btn-default"><%= link_to '編集する', edit_post_path(@post) %></span>
     <span class="btn btn-default"><%= link_to '削除する', post_path(@post), method: :delete, data: {confirm: '本当に削除していいですか？'} %></span>
   </div>
 <% end %>
-<span class="btn btn-default"><%= link_to '一覧画面へ', posts_path %></span>
+<span class="btn btn-default"><%= link_to '一覧画面へ戻る', posts_path %></span>
