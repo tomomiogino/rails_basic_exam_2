@@ -1,0 +1,21 @@
+<h1><%= @user.name %>さんのお気に入り一覧</h1>
+<% @favorites.each do |favorite| %>
+  <% post = Post.find_by(id: favorite.post_id) %>
+  <div class="index_item">
+    <div class="user_name">
+      <p><%= post.user.name %>さん</p>
+    </div>
+    <div class="post_content">
+      <p><%= post.content %></p>
+    </div>
+    <div class="post_image">
+      <%= image_tag post.image.url %>
+    </div>
+    <% if @user.id == current_user.id %>
+      <span class="btn btn-danger"><%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete %></span>
+    <% end %>
+    <div class="link　btn-group">
+      <span class="btn btn-default"><%= link_to "#{post.user.name}さんのプロフィールへ", user_path(post.user_id) %></span>
+    </div>
+  </div>
+<% end %>
