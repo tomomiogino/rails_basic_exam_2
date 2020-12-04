@@ -1,0 +1,14 @@
+<h1>ユーザー一覧</h1>
+<% @users.each do |user| %>
+  <div class="index_item">
+    <div class="user_name">
+      <p><%= user.name %>さん</p>
+    </div>
+    <div class="box">
+      <%= image_tag user.image_url if user.image? %>
+    </div>
+    <div class="link　btn-group">
+      <span class="btn btn-default"><%= link_to "#{user.name}さんのプロフィールへ", user_path(user.id) %></span>
+    </div>
+  </div>
+<% end %>

@@ -30,7 +30,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(post_id: @post.id)
+    if current_user
+      @favorite = current_user.favorites.find_by(post_id: @post.id)
+    else
+      redirect_to posts_path, notice: "ログインしてください"
+    end
   end
 
   def edit
