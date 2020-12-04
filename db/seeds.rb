@@ -6,6 +6,6 @@
                email: email,
                password: password,
                password_confirmation: password,
-               image: open("./public/uploads/user/image/1/41vaDIBogsL.jpg")
+               image: open("./public/41vaDIBogsL.jpg")
                )
 end
