@@ -5,15 +5,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
   <body>
     <header>
       <% if logged_in? %>
         <ul>
-          <li class="left"><%= link_to "Instaclone", root_path %></li>
-          <li class="right"><%= link_to current_user.name, user_path(current_user.id) %></li>
+          <li class="left logo_text"><%= link_to "Instaclone", root_path %></li>
+          <li class="right">ユーザー:<%= link_to current_user.name, user_path(current_user.id) %></li>
           <li class="right"><%= link_to "投稿一覧", posts_path %></li>
           <li class="right"><%= link_to '新規投稿', new_post_path %></li>
           <li class="right"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>

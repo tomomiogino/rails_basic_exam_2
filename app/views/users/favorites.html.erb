@@ -15,7 +15,7 @@
       <span class="btn btn-danger"><%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete %></span>
     <% end %>
     <div class="link　btn-group">
-      <span class="btn btn-default"><%= link_to "#{post.user.name}さんのプロフィールへ", user_path(post.user_id) %></span>
+      <span class="btn btn-default"><%= link_to '詳細を確認する', post_path(post.id) %></span>
     </div>
   </div>
 <% end %>

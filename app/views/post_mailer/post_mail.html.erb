@@ -1,9 +1,9 @@
 <h1>新規投稿が完了しました！</h1>
 <h4>ユーザー名: <%= @post.user.name %>さん</h4>
 <h4>投稿内容の確認</h4>
-<h5>投稿内容</h5>
+<h5>投稿内容した内容は下記の通りです</h5>
 <p>本文: <%= @post.content %></p>
-<h4>画像</h4>
+<p>画像</p>
 <div class="image_area">
   <%= image_tag @post.image.url %>
 </div>

@@ -1,2 +1,10 @@
-<h1>Tops#index</h1>
-<p>Find me in app/views/tops/index.html.erb</p>
+<div class="top_header">
+  <h1 class="logo_text">Instaclone</h1>
+</div>
+<div class="top_img">
+  <%= image_tag 'top_img.jpg' %>
+</div>
+<div class="link　btn-group">
+  <span class="btn btn-default"><%= link_to "新規登録", new_user_path %></span>
+  <span class="btn btn-default"><%= link_to "ログイン", new_session_path %></span>
+</div>

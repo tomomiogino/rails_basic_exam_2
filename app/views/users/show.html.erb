@@ -1,10 +1,29 @@
 <h1><%= @user.name %>さんのページ</h1>
 <p><%= notice %></p>
-<%= image_tag @user.image_url if @user.image? %>
+<div class="box">
+  <%= image_tag @user.image_url if @user.image? %>
+</div>
 <p>名前: <%= @user.name %></p>
 <% if @user.id == current_user.id %>
   <p>メールアドレス: <%= @user.email %></p>
   <span class="btn btn-default"><%= link_to "プロフィールを編集", edit_user_path(@user) %></span>
 <% end %>
-<span class="btn btn-default"><%= link_to 'お気に入り一覧', favorites_user_path(@user) %></span>
+<span class="btn btn-default"><%= link_to "#{@user.name}さんのお気に入り一覧", favorites_user_path(@user) %></span>
 <span class="btn btn-default"><%= link_to '一覧画面へ', posts_path %></span>
+<h3><%= @user.name %>さんの投稿一覧</h3>
+<% @user.posts.each do |post| %>
+  <div class="index_item">
+    <div class="user_name">
+      <p><%= post.user.name %>さん</p>
+    </div>
+    <div class="post_content">
+      <p><%= post.content %></p>
+    </div>
+    <div class="post_image">
+      <%= image_tag post.image.url %>
+    </div>
+    <div class="link　btn-group">
+      <span class="btn btn-default"><%= link_to '詳細を確認する', post_path(post.id) %></span>
+    </div>
+  </div>
+<% end %>

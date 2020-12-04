@@ -1,8 +1,7 @@
-<h3>投稿者</h3>
-<p><%= link_to @post.user.name, user_path(@post.user.id) %>さん</p>
-<h3>本文</h3>
-<p><%= @post.content %></p>
-<h3>Image</h3>
+<h5>投稿者</h5>
+<h4><%= @post.user.name %>さん</h4>
+<p>本文: <%= @post.content %></p>
+<h5>Image</h5>
 <div class="image_area">
   <%= image_tag @post.image.url %>
 </div>
@@ -19,4 +18,5 @@
     <span class="btn btn-default"><%= link_to '削除する', post_path(@post), method: :delete, data: {confirm: '本当に削除していいですか？'} %></span>
   </div>
 <% end %>
-<span class="btn btn-default"><%= link_to '一覧画面へ戻る', posts_path %></span>
+<span class="btn btn-default"><%= link_to "#{@post.user.name}さんのプロフィールへ", user_path(@post.user_id) %></span>
+<span class="btn btn-default"><%= link_to '一覧画面へ', posts_path %></span>
